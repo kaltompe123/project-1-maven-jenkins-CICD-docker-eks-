@@ -27,7 +27,7 @@ jobs:
 
     - name: Deploy WAR to Tomcat
       run: |
-        WAR_FILE=$(**/*.war)
+        WAR_FILE=$(find target -name "*.war" | head -n 1)
         curl -v -u "${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }}" \
         -T "$WAR_FILE" \
         "http://54.234.1.250:8081/manager/text/deploy?path=/test&update=true"
