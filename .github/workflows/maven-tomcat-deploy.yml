@@ -31,6 +31,6 @@ jobs:
         TOMCAT_USER: ${{ secrets.TOMCAT_USER }}
         TOMCAT_PASS: ${{ secrets.TOMCAT_PASS }}
       run: |
-        WAR_FILE=$(find target -name "*.war" | head -n 1)
+        WAR_FILE=$(find / -name "*.war" | head -n 1)
         echo "Deploying $WAR_FILE to $TOMCAT_URL"
         curl -u "$TOMCAT_USER:$TOMCAT_PASS" --upload-file "$WAR_FILE" "$TOMCAT_URL/manager/text/deploy?path=/test&update=true"
