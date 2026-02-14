@@ -29,5 +29,5 @@ jobs:
       - name: Deploy WAR to Tomcat
         run: |
           curl -v -u ${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }} \
-          --upload-file target/*.war \
+          --upload-file webapp/target/*.war \
           "http://98.80.72.212:8081/manager/text/deploy?path=/&update=true"
