@@ -30,4 +30,4 @@ jobs:
         run: |
           curl -v -u ${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }} \
           --upload-file webapp/target/*.war \
-          "http://98.80.72.212:8081/manager/text/deploy?path=/test&update=true"
+          "http://98.80.72.212:8081/manager/text/deploy?path=/fromgithubaction&update=true"   ##this working file just need to update tomcatip ##context is from githubaction 
