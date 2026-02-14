@@ -1,0 +1,33 @@
+name: Maven Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:   # Allows manual rerun
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Build with Maven (clean)
+        run: mvn clean
+
+      - name: Build with Maven (install)
+        run: mvn install
+
+      - name: Deploy WAR to Tomcat
+        run: |
+          curl -v -u ${{ secrets.TOMCAT_USER }}:${{ secrets.TOMCAT_PASSWORD }} \
+          --upload-file target/*.war \
+          "http://98.80.72.212:8081/manager/text/deploy?path=/&update=true"
