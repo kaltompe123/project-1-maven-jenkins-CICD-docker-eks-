@@ -78,6 +78,8 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.TOMCAT_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 400 ~/.ssh/id_rsa
+          ls -l ~/.ssh/id_rsa
+          file ~/.ssh/id_rsa
 
       - name: Copy WAR to Tomcat Server
         run: |
