@@ -96,7 +96,7 @@ jobs:
   aws-upload:
     name: Upload WAR to S3
     runs-on: ubuntu-latest
-    needs: build
+    #needs: build
 
     steps:
       - uses: actions/download-artifact@v4
