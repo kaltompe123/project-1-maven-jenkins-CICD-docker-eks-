@@ -84,7 +84,7 @@ jobs:
       - name: Copy WAR to Tomcat Server
         run: |
           scp -o StrictHostKeyChecking=no *.war \
-          ${{ secrets.TOMCAT_USER }}@${{ secrets.TOMCAT_HOST }}:/opt/tomcat/webapps/
+          ${{ vars.TOMCAT_USER }}@${{ vars.TOMCAT_HOST }}:/opt/tomcat/webapps/
 
       - name: Restart Tomcat
         run: |
