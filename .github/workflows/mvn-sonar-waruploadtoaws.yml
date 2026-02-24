@@ -89,7 +89,7 @@ jobs:
       - name: Restart Tomcat
         run: |
           ssh -o StrictHostKeyChecking=no \
-          ${{ secrets.TOMCAT_USER }}@${{ secrets.TOMCAT_HOST }} \
+          ${{ vars.TOMCAT_USER }}@${{ vars.TOMCAT_HOST }} \
           "sudo systemctl restart tomcat"
 
 
